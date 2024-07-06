@@ -5,9 +5,13 @@ export default function Questions() {
 
     const [checked, setChecked] = useState();
 
+    const question = data[0];
+
     useEffect(() => {
-        console.log(data)
+        console.log(question);
     }, [])
+
+
 
     function onSelect() {
         console.log('radio button change')
@@ -15,15 +19,23 @@ export default function Questions() {
   return (
     <div className="questions">
 
-        <h2 className="text-light">Simple Question 1</h2>
+        <h2 className="text-light">{question.question}</h2>
 
-        <ul>
-            <li>
-                <input type="radio" value={true} name="options" id="q1-option" onChange={onSelect()}/>
+        <ul key={question.id}>
 
-                <label className="text-primary" htmlFor="q1-option">option</label>
-                <div className="check checked"></div>
-            </li>
+                {
+                    question.options.map((q, i) => (
+                        <li>
+                            <input type="radio" value={true} name="options" id={`q${i}-option`} onChange={onSelect()}/>
+            
+                            <label className="text-primary" htmlFor={`q${i}-option`}>{q}</label>
+                            <div className="check"></div>
+                        </li> 
+                    ))
+                }
+
+          
+
         </ul>
 
     </div>

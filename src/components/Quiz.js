@@ -1,7 +1,17 @@
 import React from 'react';
 import Questions from './Questions';
+import { useEffect } from 'react';
+
+// redux store import
+import {useSelector} from 'react-redux';
 
 export default function Quiz() {
+
+  const state = useSelector(state => state)
+
+  useEffect(() => {
+    console.log(state)
+  })
 
   function onPrev() {
     console.log("On prev clicked!")
